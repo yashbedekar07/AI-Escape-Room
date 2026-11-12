@@ -1,0 +1,60 @@
+{
+  "title": "The Locked Library",
+  "intro": "You wake up on a cold wooden floor. Dusty shelves tower around you, and the only exit is a heavy iron door with a four-digit keypad. Find a way out.",
+  "win_message": "The keypad beeps, the lock clicks and the heavy door swings open. Fresh air rushes in. You have escaped the library!",
+  "objects": {
+    "desk": {
+      "name": "oak desk",
+      "description": "A heavy oak desk with a small locked drawer. A folded note lies on top.",
+      "on_examine": "The note reads: 'Light reveals what darkness hides.'"
+    },
+    "bookshelf": {
+      "name": "bookshelf",
+      "description": "A tall bookshelf full of old leather books. Four red books stand out from the rest.",
+      "on_examine": "Inside the four red books, from left to right, are handwritten numbers: 4, 8, 1, 5."
+    },
+    "clock": {
+      "name": "grandfather clock",
+      "description": "An old grandfather clock, stopped and silent.",
+      "on_examine": "An engraving on the clock reads: 'Order matters. Read from left to right.'"
+    },
+    "drawer": {
+      "name": "desk drawer",
+      "description": "A small drawer in the desk, secured with a four-digit combination lock.",
+      "locked": true,
+      "contains": ["uv_torch"]
+    },
+    "painting": {
+      "name": "painting",
+      "description": "A dark oil painting of a stormy sea. Nothing unusual at first glance.",
+      "on_use_uv_torch": "Under the violet light, glowing digits appear across the waves: 3 0 7 1."
+    },
+    "door": {
+      "name": "exit door",
+      "description": "A heavy iron door with a four-digit keypad.",
+      "locked": true
+    }
+  },
+  "items": {
+    "uv_torch": {
+      "name": "UV torch",
+      "description": "A small torch that glows violet when switched on."
+    }
+  },
+  "puzzles": {
+    "drawer_code": {
+      "target": "drawer",
+      "solution": "4815",
+      "requires_examined": ["bookshelf"]
+    },
+    "hidden_message": {
+      "target": "painting",
+      "requires_item": "uv_torch"
+    },
+    "door_code": {
+      "target": "door",
+      "solution": "3071",
+      "requires_solved": ["hidden_message"]
+    }
+  }
+}
